@@ -1,0 +1,55 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "HelveticaNeueBold";
+  src: url("/fonts/HelveticaNeueBold.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "HelveticaNeueLight";
+  src: url("/fonts/HelveticaNeueLight.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: "HelveticaNeueLight", sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  padding-bottom: 0.5rem;
+  font-family: "HelveticaNeueBold";
+  text-align: center;
+}
+
+p {
+  padding-bottom: 0.25rem;
+  font-weight: 200;
+  max-width: 800px;
+  margin: auto;
+}
+
+img {
+  max-width: 100%;
+}
+
+.textalign {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.pos1 {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+}

@@ -1,0 +1,50 @@
+---
+const { data } = Astro.props;
+---
+
+<article>
+  <div class="background">
+    <img src={data.img} alt=`Image of ${data.name}` />
+  </div>
+  <h3>{data.name}</h3>
+  <p>{data.price} kr</p>
+  <div>
+    <div class={data.color[0]}></div>
+    <div class={data.color[1]}></div>
+  </div>
+</article>
+
+<style>
+  .background {
+    width: 340px;
+    height: 340px;
+    background-color: #626262;
+    display: grid;
+  }
+  .background img {
+    width: 250px;
+    height: 300px;
+    object-fit: contain;
+    align-self: center;
+    justify-self: center;
+  }
+  .color {
+    padding: 5px;
+    background-color: white;
+  }
+  .white {
+    display: inline-block;
+    padding: 5px 10px 5px 10px;
+    background-color: white;
+    border: 1px solid white;
+  }
+  .black {
+    display: inline-block;
+    padding: 5px 10px 5px 10px;
+    background-color: black;
+    border: 1px solid white;
+  }
+  h3 {
+    text-align: start;
+  }
+</style>

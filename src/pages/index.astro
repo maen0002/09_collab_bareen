@@ -1,0 +1,75 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Products from "../components/Products.astro";
+import Competetion from "../components/Competetion.astro";
+import About from "../components/About.astro";
+import Button from "../components/Button.astro";
+import Menu from "../components/Menu.astro";
+
+const url = "https://ihcmzdvoknmkhkgvgpns.supabase.co/rest/v1/produkter?";
+const key = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImloY216ZHZva25ta2hrZ3ZncG5zIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDUyMzg2MjUsImV4cCI6MjA2MDgxNDYyNX0.N29_PB4tk1VkdLF-oewt6tVIJBm5qv4urhNcocyo42c";
+
+const options = {
+  headers: {
+    apikey: key,
+  },
+};
+
+const request = await fetch(url, options);
+const data = await request.json();
+
+console.log("data", data);
+---
+
+<Layout title="home">
+  <div class="grid">
+    <Menu />
+    <Header />
+  </div>
+  <div class="black">
+    <h2>Nye produkter</h2>
+    <p class="textalign">Shop vores nye skiing-collection lavet i samarbejde med Arctic Outdoor</p>
+    <Button linktitle="Se alle produkter" />
+    <div class="products">
+      {
+        data.map((product) => {
+          return <Products data={product} />;
+        })
+      }
+    </div>
+  </div>
+  <h2>Tilmeld dig vores konkurrence...</h2>
+  <p class="textalign">Sneen kalder. Vi ser dig. Deltag i Bareen x Arctic Outdoor konkurrencen. Upload et billede på Instagram i din Bareen-trøje på skiferie, brug #BareenInTheWild, og tag @bareen. En heldig vinder inviteres til vores ski-tur til St. Moritz sammen med folk som Noah Carter, Kesi mm.</p>
+  <Button linktitle="Læs mere" />
+  <About />
+  <Competetion />
+</Layout>
+<style>
+  section {
+    padding: 2rem;
+  }
+  .products {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: space-evenly;
+    padding-top: 1rem;
+    padding-bottom: 4.5rem;
+    margin: auto;
+    max-width: 1200px;
+  }
+  .black {
+    background-color: black;
+    padding-bottom: 1rem;
+    padding-top: 2.5rem;
+    margin-bottom: 5rem;
+    color: white;
+    position: relative;
+    bottom: 5px;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+</style>

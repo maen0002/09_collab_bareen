@@ -1,0 +1,23 @@
+---
+import { Image } from "astro:assets";
+import headerVideo from "../assets/barrenhero3_2.mp4";
+---
+
+<div class="pos1">
+  <video autoplay loop muted plays-inline> <source src={headerVideo} type="video/mp4" /></video>
+</div>
+
+<style>
+  video {
+    width: 100%;
+    z-index: -1;
+  }
+  @media screen and (max-width: 800px) {
+    video {
+      width: 100%;
+      height: 600px;
+      position: relative;
+      z-index: -1;
+    }
+  }
+</style>
