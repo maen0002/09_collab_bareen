@@ -1,10 +1,12 @@
 ---
 import { Image } from "astro:assets";
-import headerVideo from "../assets/barrenhero3_2.mp4";
+import headerVideo1 from "../assets/barrenhero3_2.mp4";
+import headerVideo2 from "../assets/mobileviewbareen.mp4";
 ---
 
 <div class="pos1">
-  <video autoplay loop muted plays-inline> <source src={headerVideo} type="video/mp4" /></video>
+  <video class="video_desktop" autoplay loop muted plays-inline> <source src={headerVideo1} type="video/mp4" /></video>
+  <video class="video_mobile" autoplay loop muted plays-inline> <source src={headerVideo2} type="video/mp4" /></video>
 </div>
 
 <style>
@@ -12,12 +14,17 @@ import headerVideo from "../assets/barrenhero3_2.mp4";
     width: 100%;
     z-index: -1;
   }
+  .video_mobile {
+    display: none;
+  }
   @media screen and (max-width: 800px) {
-    video {
-      width: 100%;
-      height: 600px;
-      position: relative;
-      z-index: -1;
+    .video_desktop {
+      display: none;
+    }
+    .video_mobile {
+      display: block;
+      max-height: 640px;
+      object-fit: cover;
     }
   }
 </style>
